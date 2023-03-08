@@ -16,20 +16,25 @@
     
     <nav>
       <ul>
+        {{!-- link to homepage --}}
         <li><a href="/">Home</a></li>
+        {{!-- if user is logged in, links to the dashboard & logout will show --}}
       {{#if logged_in}}
       <li><a href="/dashboard">Dashboard</a></li>
       <li><a href="#" class="btn" id="logout">logout</a></li>
       {{else}}
+      {{!-- else only login link will show --}}
       <li><a href="/login">Login</a></li>
       {{/if}}
       </ul>
       
     </nav>
   </header>
+
   <main class="container container-fluid mt-5">
     {{{ body }}}
   </main>
+
   <footer>
       <a href="/dashboard/new">Create New Post</a>
   </footer>
