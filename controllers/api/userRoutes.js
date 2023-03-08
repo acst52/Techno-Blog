@@ -1,5 +1,16 @@
 const router = require('express').Router();
 const { User } = require('../../models');
+const { Post } = require('../../models');
+
+// route that handles POST request to '/userRoutes'
+router.post('/', async (req, res) => {
+  try {
+    const userData = await User.create(req.body);
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
 
 router.post('/login', async (req, res) => {
   try {
@@ -41,6 +52,12 @@ router.post('/logout', (req, res) => {
   } else {
     res.status(404).end();
   }
+});
+
+// controller for displaying blog post:
+router.get('/post/:id', async (req, res) => {
+  const post = await Post.FindByPk(req.params.id);
+  res.render('post', { post });
 });
 
 module.exports = router;

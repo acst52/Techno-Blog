@@ -1,12 +1,12 @@
 [
     {
-      "name": "Sal",
-      "email": "sal@hotmail.com",
-      "password": "password12345"
+      "name": "Ashley",
+      "email": "acst52@gmail.com",
+      "password": "yikes this needs to be hashed"
     },
     {
-      "name": "Lernantino",
-      "email": "lernantino@gmail.com",
-      "password": "password12345"
+      "name": "John",
+      "email": "Johnny123@gmail.com",
+      "password": "this too, needs to be hashed"
     }
-  ]
+]
