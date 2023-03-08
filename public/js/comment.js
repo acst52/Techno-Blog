@@ -1,0 +1,1 @@
+// similar to login/signup.js, grabs values for post id and body, fetch req /api/comment

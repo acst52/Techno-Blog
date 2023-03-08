@@ -1,0 +1,1 @@
+// similar to login/signup.js, grabs values for title and body, fetch req /api/post
