@@ -1,22 +1,22 @@
-{{!-- create a view for a user to create a new blog post (with title, body and author inputs) --}}
+{{!-- This is the view for when an auth user wants to create a new blog post (with title, body, author inputs) --}}
 
-{{#extends 'layouts/main'}}
-{{#content 'page-title'}}New Post{{/content}}
+{{#extends "dashboard"}}
+  {{#contentFor "main"}}
 
-<form action="/api/posts" method="POST">
-    <div class="mb-3">
-        <label for="title" class="form-label">Title:</label>
-            <input type="text" class="form-control" id="title" name="title" required>
-    </div>
-    <div class="mb-3">
-        <label for="body" class="form-label">Body:</label>
-            <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit:</button>
-</form>
+<h1>Write a New Blog Post</h1>
+    <form action="/api/posts" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="mb-3">
+            <label for="body" class="form-label">Body:</label>
+                <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit:</button>
+    </form>
 
-{{> editPost }}
-
+  {{/contentFor}}
 {{/extends}}
 
-<script src="../../public/js/edit.js"></script>
+<script src="../../public/js/new.js"></script>

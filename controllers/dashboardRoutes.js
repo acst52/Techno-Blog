@@ -25,8 +25,26 @@ router.get('/posts', withAuth, async (req, res) => {
     }
 });
 
+
 // Routes still needed:
 
-// 2. get route with /new endpt, res.render for new post in the layout of dashboard
+// 2. get route with /new endpt, res.render for new post in layout of dashboard
+
+router.get('/new', withAuth, async (req, res) => {
+    try {
+        res.render('newPost');
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // 3. get route with the /edit/:id endpoint .. post.findByPk(req.params.id), then render into edit post with layout of dashboard
+
+router.get('/edit/:id', withAuth, async (req, res) => {
+    try {
+        const post = await Post.findByPk(req.params.id);
+        res.render('editPost', { post });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});

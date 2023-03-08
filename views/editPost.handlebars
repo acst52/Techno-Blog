@@ -1,38 +1,32 @@
+{{!-- set the layout to dashboard --}}
+{{#extends 'dashboard'}}
 
-<form action="/posts/{{id}}" method="POST">
+{{!-- specify title --}}
+{{#content 'title'}}Edit Post{{/content}}
+
+{{!-- define main content --}}
+{{#content 'main'}}
+  <h2>Edit Post</h2>
+    {{!-- post.id or just id? same question for post.title and post.content below... --}}
+  <form action="/posts/{{ post.id }}?_method=PUT" method="POST">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" value="{{ post.title }}" required>
+    </div>
+    <div>
+      <label for="content">Content:</label>
+      <textarea name="content" rows="10" required>{{ post.content }}</textarea>
+    </div>
+    <div>
+      <button type="submit">Update</button>
+    </div>
+  </form>
+{{/content}}
+
+<script src="../../public/js/edit.js"></script>
+
+
+
+{{!-- <form action="/posts/{{id}}" method="POST">
 {{!-- _method with a value of PUT tells server that this is a PUT request, since HTML forms only support GET and POST reqs: --}}
-  <input type="hidden" name="_method" value="PUT">
-
-  <label for="title">Title:</label>
-  <input type="text" id="title" name="title" value="{{title}}">
-
-  <label for="body">Body:</label>
-  <textarea id="body" name="body">{{body}}</textarea>
-
-  <label for="author">Author:</label>
-  <input type="text" id="author" name="author" value="{{author}}">
-
-  <button type="submit">Update Post</button>
-</form>
-
-<script src="../../public/js/edit.js"></script>
-
-
-
-... or:
-
-
-<form action="/api/posts/{{ post.id }}" method="POST">
-    <input type="hidden" name="_method" value="PUT">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title" value="{{ post.title }}" required>
-        </div>
-        <div class="mb-3">
-            <label for="body" class="form-label">Body</label>
-            <textarea class="form-control" id="body" name="body" rows="5" required>{{ post.body }}</textarea>
-        </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-<script src="../../public/js/edit.js"></script>
+  <input type="hidden" name="_method" value="PUT"> --}}
