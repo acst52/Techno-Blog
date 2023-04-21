@@ -1,22 +1,20 @@
+{{!-- DONE --}}
+
 {{!-- This is the view for when an auth user wants to create a new blog post (with title, body, author inputs) --}}
 
-{{#extends "dashboard"}}
-  {{#contentFor "main"}}
+<div class="post card">
+  <div class="card-header">
+    <h2>Create New Post</h2>
+  </div>
+  <form id="new-post-form" class="card-body">
+    <label class="form-label" for="post-title">Title</label>
+    <input type="text" name="post-title" class="form-input" />
 
-<h1>Write a New Blog Post</h1>
-    <form action="/api/posts" method="POST">
-        <div class="mb-3">
-            <label for="title" class="form-label">Title:</label>
-                <input type="text" class="form-control" id="title" name="title" required>
-        </div>
-        <div class="mb-3">
-            <label for="body" class="form-label">Body:</label>
-                <textarea class="form-control" id="body" name="body" rows="5" required></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit:</button>
-    </form>
+    <label class="form-label" for="post-body">Content</label>
+    <textarea name="post-body" class="form-input"></textarea>
 
-  {{/contentFor}}
-{{/extends}}
+    <button type="submit" class="btn">Create</button>
+  </form>
+</div>
 
-<script src="../../public/js/new.js"></script>
+<script src="/js/new.js"></script>

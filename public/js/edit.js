@@ -6,10 +6,10 @@ editButtons.forEach(button => {
     const postId = event.target.getAttribute('data-post-id');
     const response = await fetch(`/api/posts/${postId}`);
     if (response.ok) {
-      const post = await response.json();
-      document.querySelector('#editPostTitle').value = post.title;
-      document.querySelector('#editPostBody').value = post.body;
-      document.querySelector('#editPostForm').setAttribute('data-post-id', post.id);
+      const { id, title, content } = await response.json();
+      document.querySelector('#edit-title-input').value = title;
+      document.querySelector('#edit-content-input').value = content;
+      document.querySelector('#id').setAttribute('data-post-id', id);
     }
   });
 });

@@ -3,25 +3,24 @@ const { Post, User } = require('../models/');
 const withAuth = require('../utils/auth');
 
 // get all auth user's posts
-router.get('/posts', withAuth, async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
-        // now that user's been authenticated thanks to middleware specified above, let's get the current session's user id:
-        const userId = req.session.userId;
-
         // let's find user id and incl all their posts
-        const user = await User.findByPk(userId, {
-            Include: [Post]
+        const postData = await Post.findAll({
+            where: {
+                userId: req.session.userId
+            }
         });
 
         // Pass their posts to the view & render into all posts admin using dashboard layout:
-        const posts = user.posts;
-        res.render('allPostsAdmin', { posts });
+        const posts = postData.map((post) => post.get({
+            plain: true
+        }));
+        res.render('allPostsAdmin', { layout: "dashboard", posts });
         
-    } catch (err) {
-        // res.status(500).send('You do not have any posts! To create a post, go to LINK')
-        console.log("This user does not have any active posts");
-        // if user has no active posts, redirect to post creation page:
-        res.redirect('/newPost');
+    } catch (err) { // if withAuth fails...
+        // if user has no active posts, redirect to login page:
+        res.redirect('login');
     }
 });
 
@@ -32,7 +31,7 @@ router.get('/posts', withAuth, async (req, res) => {
 
 router.get('/new', withAuth, async (req, res) => {
     try {
-        res.render('newPost');
+        res.render('newPost', { layout: 'dashboard' });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -42,9 +41,18 @@ router.get('/new', withAuth, async (req, res) => {
 
 router.get('/edit/:id', withAuth, async (req, res) => {
     try {
-        const post = await Post.findByPk(req.params.id);
-        res.render('editPost', { post });
+        const postData = await Post.findByPk(req.params.id);
+        if (postData) {
+            const post = postData.get({
+                plain: true
+            });
+            res.render('editPost', { layout: 'dashboard', post });
+        } else {
+            res.status(404).end(); // if bad req / id not found
+        }
     } catch (err) {
-        res.status(500).json(err);
+        res.redirect('login'); // if withAuth fails
     }
 });
+
+module.exports = router;
