@@ -2,8 +2,6 @@
 
 // similar to login/signup.js, grabs values for title and body, fetch req /api/post
 
-// this is from comment, adj accordingly:
-
 const newPostHandler = async (event) => {
     event.preventDefault();
     const title = document.querySelector("input[name='post-title']").value;
