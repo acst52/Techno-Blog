@@ -39,6 +39,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
+// Below allows server to sync db w Sequelize models when the server starts, i.e. when you run `npm start` or `npm run dev`
 app.listen(PORT, () => {
     console.log('Server now listening');
     sequelize.sync({ force: false })

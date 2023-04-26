@@ -10,5 +10,13 @@ const logout = async () => {
       alert(response.statusText);
     }
   };
+
+// added the following to check and see if there is a logout element on pg
+document.addEventListener('DOMContentLoaded', () => {
+  const logoutBtn = document.querySelector('#logout');
+  if (logoutBtn) {
+    logoutBtn.addEventListener('click', logout);
+  }
+});
   
-  document.querySelector('#logout').addEventListener('click', logout);
+// document.querySelector('#logout').addEventListener('click', logout);

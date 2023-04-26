@@ -1,13 +1,25 @@
 {
+    "name": "ashleys-techno-blog",
+    "version": "1.0.0",
+    "description": "A CMS-style blog site for developers to publish articles and blog posts",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js",
+      "seed": "node seeds/seed.js",
+      "dev": "nodemon server.js"
+    },
     "dependencies": {
-        "bcrypt": "^5.1.0",
-        "connect-session-sequelize": "^7.1.5",
-        "dotenv": "^16.0.3",
-        "express": "^4.18.2",
-        "express-handlebars": "^7.0.1",
-        "express-session": "^1.17.3",
-        "mysql2": "^3.2.3",
-        "sequelize": "^6.29.1",
-        "sqlite3": "^5.1.4"
+      "bcrypt": "^5.1.0",
+      "connect-session-sequelize": "^7.1.5",
+      "dotenv": "^16.0.3",
+      "express": "^4.18.2",
+      "express-handlebars": "^7.0.1",
+      "express-session": "^1.17.3",
+      "mysql2": "^3.2.3",
+      "sequelize": "^6.29.1",
+      "sqlite3": "^5.1.4"
+    },
+    "devDependencies": {
+      "nodemon": "^2.0.15"
     }
 }

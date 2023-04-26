@@ -1,14 +1,14 @@
 const sequelize = require('../config/connection');
 const { User, Post } = require('../models');
 
-const userData = require('./userData.json');
+const userData = require('./userData.js');
 const postData = require('./postData.json');
 
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
   await User.bulkCreate(userData, {
-    individualHooks: true,
+    individualHooks: true, // makes sure pw is hashed using hooks defined in User model
     returning: true,
   });
 

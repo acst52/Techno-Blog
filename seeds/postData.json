@@ -2,16 +2,16 @@
 	{
 		"title": "How to Build a REST API",
 		"body": "In this tutorial, we will walk through how to build a REST API using Node.js and Express.",
-		"user_id": 1
+		"username": "Ashley"
 	},
 	{
 		"title": "Introduction to React",
 		"body": "In this post, we will introduce the basics of React and explain how it can be used to build modern web applications.",
-		"user_id": 2
+		"username": "John"
 	},
 	{
 		"title": "10 Tips for Writing Clean Code",
 		"body": "Writing clean code is important for maintaining large codebases and collaborating with other developers. In this post, we will provide 10 tips for writing clean code.",
-		"user_id": 1
+		"username": "Ashley"
 	}
 ]
