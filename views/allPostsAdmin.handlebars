@@ -1,14 +1,9 @@
-{{!-- This is the view for when an authenticated user wants to see all of their active posts. here, the #extends "dashboard" helper extends the dashboard.handlebars layout, and the #contentFor "main" + /contentFor helpers define the content that will be injected in to the 'main' section of the layout. the #each helper is used to iterate over the 'posts' array and render each post's title and content. --}}
-
-{{#extends "dashboard"}}
-  {{#contentFor "main"}}
-    <h1>All Posts</h1>
-    {{#each posts}}
-      <div class="post">
-        <h2>{{title}}</h2>
-        <p>{{content}}</p>
-        {{!-- <h3>{{username}}</h3> --}}
-      </div>
-    {{/each}}
-  {{/contentFor}}
-{{/extends}}
+<h1>All Posts</h1>
+<div class="posts list-group">
+  {{#each posts}}
+    <a class="list-item flex-row justify-space-between" href="/dashboard/edit/{{id}}">
+      <span>{{title}}</span>
+      <span>{{format_date createdAt}}</span>
+    </a>
+  {{/each}}
+</div>
