@@ -5,6 +5,7 @@
 ## Description
 
 In this Module 14 Challenge, we were tasked to build a CMS-style Tech Blog site from scratch, where users can publish blog posts and comment on others! We followed the MVC architectural paradigm, used Sequelize as the ORM, express-session for authentication and Handlebars.js as the templating language. This app was deployed on Heroku, so you can visit it here: 
+
 [![Techno Blog](https://user-images.githubusercontent.com/116177485/236051531-e3fc9d8a-883c-49c9-99ea-00b300ef6a6c.png)](https://serene-river-60751.herokuapp.com/)
 
 ## Table of Contents
