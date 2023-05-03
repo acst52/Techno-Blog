@@ -50,3 +50,11 @@ deleteButton.addEventListener('click', async (event) => {
 		alert('Failed to delete post');
 	}
 });
+
+// Current dev console errs:
+// edit.js:5
+//  GET https://serene-river-60751.herokuapp.com/api/posts/null 404 (Not Found)
+// (anonymous)	@	edit.js:5
+// edit.js:21
+//  PUT https://serene-river-60751.herokuapp.com/api/posts/null 404 (Not Found)
+// (anonymous)	@	edit.js:21
