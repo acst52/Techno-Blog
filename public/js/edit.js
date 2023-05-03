@@ -1,13 +1,13 @@
 // add click event listener to edit btn
 const editButton = document.querySelector('#edit-btn');
 editButton.addEventListener('click', async (event) => {
-	const postId = event.target.getAttribute('data-post-id');
-	const response = await fetch(`/api/posts/${postId}`);
+	const postId = editButton.getAttribute('data-post-id');
+	const response = await fetch(`/api/post/${postId}`);
 	if (response.ok) {
 		const { id, title, content } = await response.json();
-		document.querySelector('input[name="post-title"]').value = title;
-		document.querySelector('textarea[name="post-body"]').value = content;
-		document.querySelector('#edit-post-form').setAttribute('data-post-id', id);
+		document.querySelector('#edit-post-title').value = title;
+		document.querySelector('#edit-post-content').value = content;
+		document.querySelector('#post-id').value = id;
 	}
 });
 
