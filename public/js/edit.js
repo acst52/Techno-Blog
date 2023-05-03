@@ -2,7 +2,7 @@
 const editButton = document.querySelector('#edit-btn');
 editButton.addEventListener('click', async (event) => {
 	const postId = editButton.getAttribute('data-post-id');
-	const response = await fetch(`/api/post/${postId}`);
+	const response = await fetch(`/api/post/:${postId}`); // added :
 	if (response.ok) {
 		const { id, title, content } = await response.json();
 		document.querySelector('#edit-post-title').value = title;
@@ -18,7 +18,8 @@ editPostForm.addEventListener('submit', async (event) => {
 	const title = document.querySelector('#edit-post-title').value;
 	const body = document.querySelector('#edit-post-content').value;
 	const postId = editPostForm.getAttribute('#post-id');
-	const response = await fetch(`/api/posts/${postId}`, {
+	const response = await fetch(`/api/posts/:${postId}`, {
+		// added :
 		method: 'PUT',
 		body: JSON.stringify({ title, body }),
 		headers: {
@@ -37,7 +38,8 @@ const deleteButton = document.querySelector('#delete-btn');
 deleteButton.addEventListener('click', async (event) => {
 	event.preventDefault();
 	const postId = document.querySelector('#post-id').value;
-	const response = await fetch(`/api/posts/${postId}`, {
+	const response = await fetch(`/api/posts/:${postId}`, {
+		// added :
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json',
@@ -52,9 +54,11 @@ deleteButton.addEventListener('click', async (event) => {
 });
 
 // Current dev console errs:
-// edit.js:5
 //  GET https://serene-river-60751.herokuapp.com/api/posts/null 404 (Not Found)
 // (anonymous)	@	edit.js:5
-// edit.js:21
+
 //  PUT https://serene-river-60751.herokuapp.com/api/posts/null 404 (Not Found)
 // (anonymous)	@	edit.js:21
+
+// DELETE https://serene-river-60751.herokuapp.com/api/posts/5 404 (Not Found)
+// (anonymous) @ edit.js:40
