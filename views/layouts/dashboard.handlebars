@@ -9,29 +9,29 @@
 </head>
 
 <body>
-  <header class="display-flex justify-space-between align-center p-2">
-    <h1>
-      The Tech Blog
-    </h1>
     
     <nav>
       <ul>
         {{!-- link to homepage --}}
-        <li><a href="/">Home</a></li>
-        {{!-- if user is logged in, links to the dashboard & logout will show --}}
+        <li class="li-inline nav-item"><a href="/">Home</a></li>
       {{#if logged_in}}
-      <li><a href="/dashboard">Dashboard</a></li>
-      <li><a href="#" class="btn" id="logout">logout</a></li>
+        {{!-- if user is logged in, links to the dashboard & logout will show --}}
+        <li class="li-inline nav-item"><a href="/dashboard">Dashboard</a></li>
+        <li class="li-inline nav-item"><a href="#" class="btn" id="logout">Logout</a></li>
       {{else}}
-      {{!-- else only login link will show --}}
-      <li><a href="/login">Login</a></li>
+        {{!-- if user not logged in, login + login link will show --}}
+        <li class="li-inline nav-item"><a href="/login">Login</a></li>
       {{/if}}
       </ul>
-      
     </nav>
+    
+  <header class="display-flex justify-space-between align-center p-2">
+    <h1>
+      The Tech Blog
+    </h1>
   </header>
 
-  <main class="container container-fluid mt-5">
+  <main class="col-auto">
     {{{ body }}}
   </main>
 
@@ -40,5 +40,6 @@
   </footer>
   
 </body>
-  <script src="/js/logout.js"></script>
 </html>
+
+<script src="/js/logout.js"></script>
