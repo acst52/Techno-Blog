@@ -3,17 +3,17 @@
     <h2>Edit Post?</h2>
   </div>
   <form id="edit-post-form" class="card-body">
-    <input type="hidden" name="post-id" value="{{post.id}}" />
+    <input id="post-id" type="hidden" name="post-id" value="{{post.id}}" />
 
     <label class="form-label" for="post-title">Title of post:</label>
-    <input type="text" name="post-title" value="{{post.title}}" class="form-input" />
+    <input id="edit-post-title" type="text" name="post-title" value="{{post.title}}" class="form-input" />
 
     <label class="form-label" for="post-body">Content of post:</label>
-    <textarea name="post-body" class="form-input">{{post.body}}</textarea>
+    <textarea id="edit-post-content" name="post-body" class="form-input">{{post.body}}</textarea>
 
-    <button type="submit" class="btn">Update Post</button>
+    <button id="edit-btn" type="submit" class="btn">Update Post</button>
 
-    <button type="button" id="delete-btn" class="btn">Delete Post</button>
+    <button id="delete-btn" type="button" id="delete-btn" class="btn">Delete Post</button>
   </form>
 </div>
 
