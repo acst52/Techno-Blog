@@ -34,4 +34,3 @@ editPostForm.addEventListener('submit', async (event) => {
     alert('Failed to edit post');
   }
 });
-

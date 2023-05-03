@@ -16,7 +16,7 @@ const commentFormHandler = async function(event) {
 				'Content-Type': 'application/json',
 			},
 		});
-            document.location.reload();
+        document.location.reload();
 	}
 };
 

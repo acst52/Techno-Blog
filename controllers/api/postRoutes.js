@@ -3,7 +3,7 @@ const { Post } = require("../../models/");
 const withAuth = require("../../utils/auth");
 
 // POST route for creating a new post
-router.post("/", withAuth, async (req, res) => {
+router.post('/', withAuth, async (req, res) => {
   try {
     const newPost = await Post.create({
       ...req.body,
@@ -11,21 +11,20 @@ router.post("/", withAuth, async (req, res) => {
     });
     res.json(newPost);
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });
 
 // PUT route for updating post
-router.put("/:id", withAuth, async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
   try {
-    // updatedPost in sq br bc array of post elements; need to update only specific properties
+    // updatedPost in square brackets bc = array of post elements; need to update specific properties only
     const [updatedPost] = await Post.update(req.body, {
       where: {
         id: req.params.id,
       },
     });
-    if (updatedPost > 0) { // as long as array of post elements > 0, this will work. else its not found bc post does not exist
+    if (updatedPost > 0) { // as long as array of post elements > 0, this will work. else not found bc post does not exist
       res.status(200).end();
     } else {
       res.status(404).end();
@@ -37,7 +36,7 @@ router.put("/:id", withAuth, async (req, res) => {
 });
 
 // DELETE route for deleting a post
-router.delete("/:id", withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
   try {
     const [deletedPost] = await Post.destroy({
       where: {
@@ -51,7 +50,6 @@ router.delete("/:id", withAuth, async (req, res) => {
       res.status(404).end();
     }
   } catch (err) {
-    console.log(err);
     res.status(500).json(err);
   }
 });

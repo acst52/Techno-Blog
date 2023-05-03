@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const apiRoutes = require('./api/');
+const apiRoutes = require('./api'); // removed the `/` after api, just to see - sometimes tiny things make bugs!
 const homeRoutes = require('./homeRoutes');
 const dashboardRoutes = require('./dashboardRoutes');
 

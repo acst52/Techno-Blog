@@ -7,13 +7,13 @@ router.post('/', async (req, res) => {
   try {
     const userData = await User.create({
       username: req.body.username,
-      password: req.body.password
+      password: req.body.password,
     });
     req.session.save(() => {
       req.session.userId = userData.id,
       req.session.username = userData.username,
       req.session.loggedIn = true,
-      res.json(userData)
+      res.json(userData);
     });
   } catch (err) {
     res.status(500).json(err);
@@ -24,8 +24,8 @@ router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ 
       where: {
-        username: req.body.username
-      }
+        username: req.body.username,
+      },
     });
 
     if (!userData) {
@@ -35,9 +35,9 @@ router.post('/login', async (req, res) => {
       return;
     }
 
-    const validPassword = await userData.checkPassword(req.body.password);
+    const password = await userData.checkPassword(req.body.password);
 
-    if (!validPassword) {
+    if (!password) {
       res
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
@@ -53,7 +53,7 @@ router.post('/login', async (req, res) => {
     });
 
   } catch (err) {
-    res.status(400).json({ message: 'No user account found.'});
+    res.status(400).json({ message: 'No user account found!' });
   }
 });
 
