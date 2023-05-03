@@ -99,6 +99,7 @@ header footer {
 
 /* Main content */
 .main {
+	box-sizing: border-box;
 	background-color: white;
 }
 
@@ -119,6 +120,7 @@ header footer {
 
 /* Cards */
 .card {
+	margin: 0 auto;
 	border: 3px solid var(--tertiary);
 	background-color: white;
 	border-radius: 5px;
