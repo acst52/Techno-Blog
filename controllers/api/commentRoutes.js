@@ -12,7 +12,7 @@ router.post('/', withAuth, async (req, res) => {
 		// update the Post to assoc new comment w it
 		await Post.updateOne(
 			{ _id: req.body.postId },
-			{ $push: { comments: newComment._id } }
+			{ $push: { comment: newComment._id } }
 		);
 		res.json(newComment);
 	} catch (error) {
