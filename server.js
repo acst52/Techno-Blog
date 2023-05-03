@@ -11,24 +11,24 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
-
 const sess = {
-  secret: 'your_secret_key',
-  cookie: {
-    maxAge: 3000000,
-    httpOnly: true,
-    secure: false,
-    sameSite: "strict"
-  },
-  resave: false,
-  saveUninitialized: true,
-  store: new SequelizeStore({
-    db: sequelize
-  })
+	secret: 'your_secret_key',
+	cookie: {
+		maxAge: 3000000,
+		httpOnly: true,
+		secure: false,
+		sameSite: 'strict',
+	},
+	resave: false,
+	saveUninitialized: true,
+	store: new SequelizeStore({
+		db: sequelize,
+	}),
 };
 
 app.use(session(sess));
+
+const hbs = exphbs.create({ helpers });
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
@@ -41,6 +41,6 @@ app.use(routes);
 
 // Below allows server to sync db w Sequelize models when the server starts, i.e. when you run `npm start` or `npm run dev`
 app.listen(PORT, () => {
-    console.log('Server now listening');
-    sequelize.sync({ force: false })
+	console.log(`Server now listening on port ${PORT}!!`);
+	sequelize.sync({ force: false });
 });

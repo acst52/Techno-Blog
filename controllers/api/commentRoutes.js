@@ -9,10 +9,10 @@ router.post('/', withAuth, async (req, res) => {
 			...req.body,
 			userId: req.session.userId,
 		});
-		// update the Post to assoc new comment w it
+		// update the Post to assoc new comment w it? test
 		await Post.updateOne(
 			{ _id: req.body.postId },
-			{ $push: { comment: newComment._id } }
+			{ $push: { comment: newComment._id } } // comment may need an `s`
 		);
 		res.json(newComment);
 	} catch (error) {
